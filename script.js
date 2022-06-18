@@ -4,7 +4,7 @@
 const possibleOptions = ["Rock", "Paper", "Scissors"];
 
 // Take user's choice
-let playerMove = prompt("Please write your move: (Rock, Paper or Scissors) ");
+// let playerMove = prompt("Please write your move: (Rock, Paper or Scissors) ");
 
 // Generate a random number to reveal computer's choice
 function randomNumber() {
@@ -19,34 +19,30 @@ function computerPlay() {
 
 // Main game function
 function playGame(playerSelection, computerSelection) {
-  // Take computer's choice which is generated randomly
-  computerPlay();
 
   // Making case-insensitive the user's and computer's choice
-  let player = playerMove.toLowerCase();
-  let computer = computerPlay().toLowerCase();
+  // let player = playerMove.toLowerCase();
+  // let computer = computerPlay().toLowerCase();
 
   // Game logic
-  if (
-    !player ||
-    player == " " ||
-    player != "paper" ||
-    player != "rock" ||
-    player != "scissors"
-  ) {
-    console.log("Please enter a valid move");
-    playGame();
-  } else if (computer === player) {
-    console.log("Tie game");
-  } else if ((computer === "rock") & (player === "scissors")) {
+  if (computerSelection === playerSelection) {
+    return "Tie game";
+  } else if ((computerSelection === "rock") & (playerSelection === "scissors")) {
     console.log("Computer won");
-  } else if ((computer === "paper") & (player === "rock")) {
-    console.log("Computer won");
-  } else if ((computer === "scissors") & (player === "paper")) {
-    console.log("Computer won");
+  } else if ((computerSelection === "paper") & (playerSelection === "rock")) {
+    return "Computer won";
+  } else if ((computerSelection === "scissors") & (playerSelection === "paper")) {
+    return "Computer won";
   } else {
-    console.log("Player won");
+    return "Player won";
   }
 }
+
+const playerSelection = "rock";
+let computerSelection = computerPlay();
+computerSelection = computerSelection.toLowerCase();
+console.log(playerSelection);
+console.log(computerSelection);
+console.log(playGame(playerSelection, computerSelection));
 
 playGame();
