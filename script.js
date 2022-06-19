@@ -2,18 +2,6 @@
 
 const buttons = document.querySelectorAll('.btn');
 
-let counter = 0;
-
-// Select button
-
-function selectItem(e) {
-  console.log(this.className);
-}
-
-// Listen for button click
-
-buttons.forEach(item => item.addEventListener('click', selectItem));
-
 // Create an array of possible options which computer will choice one of them randomly
 const possibleOptions = ["rock", "paper", "scissors"];
 
@@ -33,58 +21,52 @@ function computerPlay() {
   return possibleOptions[randomNumber()];
 }
 
-// Main game function
-function playGame(playerSelection, computerSelection) {
-  // Game logic
-  if (computerSelection === playerSelection) {
-    return "Tie game";
-  } else if (computerSelection === "rock" && playerSelection === "scissors") {
-    computerScore++;
-    console.log("Computer selected rock");
-    console.log(computerScore);
-    return "Computer won";
-  } else if (computerSelection === "paper" && playerSelection === "rock") {
-    computerScore++;
-    console.log("Computer selected paper");
-    console.log(computerScore);
-    return "Computer won";
-  } else if (computerSelection === "scissors" && playerSelection === "paper") {
-    computerScore++;
-    console.log("Computer selected scissors");
-    console.log(computerScore);
-    return "Computer won";
-  } else {
-    playerScore++;
-    console.log(`Player selected ${playerSelection}`);
-    console.log(playerScore);
-    return "Player won";
-  }
-}
+let counter = 0;
 
+// Select button
 
-// Main game function
-// function game() {
-  
-//     // Take user's choice
-//     playerSelection = prompt(
-//       "Please write your move: (Rock, Paper or Scissors) "
-//     );
-//     // Making case-insensitive the user's choice
-//     playerSelection.toLowerCase();
-//     console.log(playerSelection);
-//     console.log(computerSelection);
+function playGame(e) {
+
+  console.log(this.classList[1]);
+  console.log(computerSelection);
+ 
+    // Game logic
+    if (computerSelection === this.classList[1]) {
+      return "Tie game";
+    } else if (computerSelection === "rock" && this.classList[1] === "scissors") {
+      computerScore++;
+      console.log("Computer selected rock");
+      console.log(computerScore);
+      return "Computer won";
+    } else if (computerSelection === "paper" && this.classList[1] === "rock") {
+      computerScore++;
+      console.log("Computer selected paper");
+      console.log(computerScore);
+      return "Computer won";
+    } else if (computerSelection === "scissors" && this.classList[1] === "paper") {
+      computerScore++;
+      console.log("Computer selected scissors");
+      console.log(computerScore);
+      return "Computer won";
+    } else {
+      playerScore++;
+      console.log(`Player selected ${this.classList[1]}`);
+      console.log(playerScore);
+      return "Player won";
+
+     
+    }
     
-//     console.log(playGame(playerSelection, computerSelection));
-//   }
-
-  if (playerScore > computerScore) {
-    console.log(`Player's score: ${playerScore} - Computer's score: ${computerScore} So, player won the game`);
   }
-
-  if (computerScore > playerScore) {
-    console.log(`Player's score: ${playerScore} - Computer's score: ${computerScore} So, computer won the game`);
-  }
+  
   
 
 
-// game();
+// Listen for button click
+
+buttons.forEach(item => item.addEventListener('click', playGame));
+
+
+
+
+
