@@ -1,10 +1,12 @@
 "use strict";
 
 // Create an array of possible options which computer will choice one of them randomly
-const possibleOptions = ["Rock", "Paper", "Scissors"];
+const possibleOptions = ["rock", "paper", "scissors"];
 
-// Take user's choice
-// let playerMove = prompt("Please write your move: (Rock, Paper or Scissors) ");
+let computerSelection = computerPlay();
+let playerScore = 0;
+let computerScore = 0;
+let playerSelection;
 
 // Generate a random number to reveal computer's choice
 function randomNumber() {
@@ -19,30 +21,56 @@ function computerPlay() {
 
 // Main game function
 function playGame(playerSelection, computerSelection) {
-
-  // Making case-insensitive the user's and computer's choice
-  // let player = playerMove.toLowerCase();
-  // let computer = computerPlay().toLowerCase();
-
   // Game logic
   if (computerSelection === playerSelection) {
     return "Tie game";
-  } else if ((computerSelection === "rock") & (playerSelection === "scissors")) {
-    console.log("Computer won");
-  } else if ((computerSelection === "paper") & (playerSelection === "rock")) {
+  } else if (computerSelection === "rock" && playerSelection === "scissors") {
+    computerScore++;
+    console.log("Computer selected rock");
+    console.log(computerScore);
     return "Computer won";
-  } else if ((computerSelection === "scissors") & (playerSelection === "paper")) {
+  } else if (computerSelection === "paper" && playerSelection === "rock") {
+    computerScore++;
+    console.log("Computer selected paper");
+    console.log(computerScore);
+    return "Computer won";
+  } else if (computerSelection === "scissors" && playerSelection === "paper") {
+    computerScore++;
+    console.log("Computer selected scissors");
+    console.log(computerScore);
     return "Computer won";
   } else {
+    playerScore++;
+    console.log(`Player selected ${playerSelection}`);
+    console.log(playerScore);
     return "Player won";
   }
 }
 
-const playerSelection = "rock";
-let computerSelection = computerPlay();
-computerSelection = computerSelection.toLowerCase();
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playGame(playerSelection, computerSelection));
 
-playGame();
+// Main game function
+function game() {
+  for (let i = 0; i < 5; i++) {
+    // Take user's choice
+    playerSelection = prompt(
+      "Please write your move: (Rock, Paper or Scissors) "
+    );
+    // Making case-insensitive the user's choice
+    playerSelection.toLowerCase();
+    console.log(playerSelection);
+    console.log(computerSelection);
+    
+    console.log(playGame(playerSelection, computerSelection));
+  }
+
+  if (playerScore > computerScore) {
+    console.log(`Player's score: ${playerScore} - Computer's score: ${computerScore} So, player won the game`);
+  }
+
+  if (computerScore > playerScore) {
+    console.log(`Player's score: ${playerScore} - Computer's score: ${computerScore} So, computer won the game`);
+  }
+  
+}
+
+game();
