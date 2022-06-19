@@ -1,5 +1,19 @@
 "use strict";
 
+const buttons = document.querySelectorAll('.btn');
+
+let counter = 0;
+
+// Select button
+
+function selectItem(e) {
+  console.log(this.className);
+}
+
+// Listen for button click
+
+buttons.forEach(item => item.addEventListener('click', selectItem));
+
 // Create an array of possible options which computer will choice one of them randomly
 const possibleOptions = ["rock", "paper", "scissors"];
 
