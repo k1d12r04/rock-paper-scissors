@@ -49,19 +49,19 @@ function playGame(playerSelection, computerSelection) {
 
 
 // Main game function
-function game() {
-  for (let i = 0; i < 5; i++) {
-    // Take user's choice
-    playerSelection = prompt(
-      "Please write your move: (Rock, Paper or Scissors) "
-    );
-    // Making case-insensitive the user's choice
-    playerSelection.toLowerCase();
-    console.log(playerSelection);
-    console.log(computerSelection);
+// function game() {
+  
+//     // Take user's choice
+//     playerSelection = prompt(
+//       "Please write your move: (Rock, Paper or Scissors) "
+//     );
+//     // Making case-insensitive the user's choice
+//     playerSelection.toLowerCase();
+//     console.log(playerSelection);
+//     console.log(computerSelection);
     
-    console.log(playGame(playerSelection, computerSelection));
-  }
+//     console.log(playGame(playerSelection, computerSelection));
+//   }
 
   if (playerScore > computerScore) {
     console.log(`Player's score: ${playerScore} - Computer's score: ${computerScore} So, player won the game`);
@@ -71,6 +71,6 @@ function game() {
     console.log(`Player's score: ${playerScore} - Computer's score: ${computerScore} So, computer won the game`);
   }
   
-}
 
-game();
+
+// game();
